@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blaze Squard | Apply</title>
+<link rel="icon" href="logo.png" type="png">
+
+<style>
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;500&display=swap');
+
+/* RESET & BODY */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Poppins',sans-serif;
+  color:rgb(248, 0, 0);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  overflow-x:hidden;
+}
+
+/* VIDEO BACKGROUND */
+#bg-video{
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  z-index:-1;
+  opacity:0.5;
+}
+
+/* NAVIGATION */
+nav{
+  position:fixed; top:0; left:0; width:100%;
+  background: rgba(0,0,0,0.8);
+  display:flex; justify-content: space-between; align-items:center;
+  padding:12px 40px;
+  z-index:1000; backdrop-filter: blur(10px);
+  box-shadow:0 4px 20px rgba(255,0,0,0.3);
+  border-bottom:2px solid #ff3333;
+}
+nav .logo-container{display:flex;align-items:center;}
+nav .logo-text{font-family:'Montserrat',sans-serif;font-weight:700;color:#ff4444;font-size:1.8rem;}
+nav ul{display:flex; list-style:none;}
+nav ul li{margin-left:20px;}
+nav ul li a{color:white; text-decoration:none; font-weight:500; transition:0.3s;}
+nav ul li a:hover{color:#ff6666;}
+
+/* FORM */
+.container{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding-top:100px;
+}
+form{
+  background: rgba(255,0,0,0.1);
+  border:2px solid #ff4444;
+  border-radius:15px;
+  padding:40px 30px;
+  width:350px;
+  box-shadow:0 0 20px red;
+}
+form h2{text-align:center;color:#ff6666;margin-bottom:20px;}
+form input{width:100%; padding:10px 12px; margin:8px 0; border-radius:8px; border:none; outline:none;}
+form button{
+  width:100%; padding:12px; margin-top:10px;
+  border:none; border-radius:12px;
+  background:#ff3333; color:white; font-size:1rem; cursor:pointer;
+  box-shadow:0 0 15px red;
+}
+form button:hover{
+  background:#ff0000; transform:scale(1.05); box-shadow:0 0 25px #ff6666;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  margin-top:auto;
+  color:white;
+  background: rgba(0,0,0,0.9);
+  border-top:3px solid #ff4444;
+  box-shadow:0 -4px 15px rgba(255,0,0,0.3);
+}
+footer a{color:#ff6666;text-decoration:none;margin:0 12px;font-weight:500;transition:0.3s;}
+footer a:hover{color:#ff9999; text-shadow:0 0 10px red;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{flex-direction:column; padding:12px 20px;}
+  nav ul{flex-direction:column; margin-top:10px;}
+  nav ul li{margin:10px 0;}
+}
+</style>
+</head>
+<body>
+
+<video autoplay muted loop id="bg-video">
+  <source src="assets/background.mp4" type="video/mp4">
+</video>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="logo-container">
+    <img src="logo.png" alt="Blaze Squard Logo" style="width:40px;height:40px;margin-right:10px;">
+    <span class="logo-text">BLAZE SQUARD</span>
+  </div>
+  <ul>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="squard.html">Squard</a></li>
+    <li><a href="tools.html">Tools</a></li>
+    <li><a href="downloads.html">Downloads</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- FORM SECTION -->
+<div class="container">
+  <form id="applyForm">
+    <h2>Join Blaze Squard</h2>
+    <input type="text" id="full_name" placeholder="Full Name" required>
+    <input type="number" id="age" placeholder="Age" required>
+    <input type="text" id="tiktok_link" placeholder="TikTok Account Link" required>
+    <input type="text" id="whatsapp" placeholder="WhatsApp Number">
+    <input type="email" id="email" placeholder="Email">
+    <input type="text" id="admin_name" placeholder="Admin Name">
+    <button type="submit">Apply Now</button>
+  </form>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 Blaze Squard |
+  <a href="#">Instagram</a> |
+  <a href="#">TikTok</a> |
+  <a href="#">YouTube</a>
+</footer>
+
+<!-- SUPABASE SCRIPT (UMD build exposes global `supabase`) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+const supabaseUrl = 'https://onceaonxjtluncmzpypa.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9uY2Vhb254anRsdW5jbXpweXBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQyMjIwNzYsImV4cCI6MjA3OTc5ODA3Nn0.kh4STYzslSu6M4qaM6k4gmKJzKIHDFPKI_jLWiiLv9U';
+// Ensure the UMD bundle exposed the global
+if(!window.supabase){
+  console.error('Supabase library not found. Check the CDN script src.');
+}
+// Use the global exposed by the UMD bundle and assign to `client` to avoid shadowing
+const client = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+// Quick runtime check: test read permission on `squad_applications` to surface common errors early
+(async ()=>{
+  try{
+    const test = await client.from('squad_applications').select('id').limit(1);
+    if(test.error){
+      console.warn('Supabase test read error on squad_applications:', test.error);
+    } else {
+      console.log('Supabase test read OK, sample rows:', test.data && test.data.length ? test.data.length : 0);
+    }
+  }catch(e){
+    console.error('Supabase runtime exception when testing squad_applications:', e);
+  }
+})();
+
+const form = document.getElementById('applyForm');
+form.addEventListener('submit', async(e)=>{
+  e.preventDefault();
+  const full_name = document.getElementById('full_name').value;
+  const age = document.getElementById('age').value;
+  const tiktok_link = document.getElementById('tiktok_link').value;
+  const whatsapp = document.getElementById('whatsapp').value;
+  const email = document.getElementById('email').value;
+  const admin_name = document.getElementById('admin_name').value;
+
+  try{
+    const res = await client
+      .from('squad_applications')
+      .insert([{ full_name, age, tiktok_link, whatsapp, email, admin_name }]);
+
+    // log full response for debugging
+    console.log('Supabase insert response:', res);
+
+    if(res.error){
+      // show detailed error message
+      const msg = res.error.message || JSON.stringify(res.error);
+      alert('Application failed: ' + msg);
+      return;
+    }
+
+    alert('Application submitted successfully!');
+    form.reset();
+  }catch(networkErr){
+    console.error('Network/exception during insert:', networkErr);
+    alert('Application failed due to network error. See console for details.');
+  }
+});
+</script>
+
+</body>
+</html>

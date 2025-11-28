@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blaze Squard | Tools</title>
+<link rel="icon" href="logo.png" type="png">
+
+<style>
+/* Include a set of modern & beautiful fonts for the font selector */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;500&family=Roboto:wght@400;700&family=Lato:wght@400;700&family=Oswald:wght@400;500&family=Inter:wght@400;700&family=Playfair+Display:wght@400;700&family=Merriweather:wght@400;700&family=Raleway:wght@400;700&family=Nunito:wght@400;700&family=Source+Sans+3:wght@400;700&family=Abril+Fatface&family=Open+Sans:wght@400;700&family=Satisfy&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;color:white;background:#330000;display:flex;flex-direction:column;min-height:100vh;overflow-x:hidden;}
+#bg-video{position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1;opacity:0.4;}
+nav{position:fixed;top:0;left:0;width:100%;background: rgba(0,0,0,0.8);display:flex;justify-content: space-between;align-items:center;padding:12px 40px;z-index:1000;backdrop-filter: blur(10px);box-shadow:0 4px 20px rgba(255,0,0,0.3);border-bottom:2px solid #ff3333;}
+nav .logo-container{display:flex;align-items:center;}
+nav .logo-text{font-family:'Montserrat',sans-serif;font-weight:700;color:#ff4444;font-size:1.8rem;}
+nav ul{display:flex; list-style:none;}
+nav ul li{margin-left:20px;}
+nav ul li a{color:white;text-decoration:none;font-weight:500;transition:0.3s;}
+nav ul li a:hover{color:#ff6666;}
+
+.container{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:120px 20px 60px 20px;gap:60px;}
+
+/* CARD STYLE FOR SECTIONS */
+.section-card{background: rgba(255,0,0,0.1);border:2px solid #ff4444;border-radius:15px;padding:30px;width:90%;max-width:900px;box-shadow:0 0 25px #ff4444;display:flex;flex-direction:column;align-items:center;gap:20px;transition:0.3s;}
+.section-card:hover{transform:scale(1.02);box-shadow:0 0 35px #ff6666;}
+
+/* TEMPLATE GRID */
+#template-selection .templates{display:grid;grid-template-columns:repeat(auto-fill,minmax(60px,1fr));gap:10px;justify-items:center;}
+#template-selection img{cursor:pointer;border:2px solid #ff4444;border-radius:8px;width:60px;transition:0.3s;}
+#template-selection img:hover{border:2px solid #ff9999;transform:scale(1.05);}
+
+/* LOGO GENERATOR */
+#logo-generator{display:flex;flex-direction:column;align-items:center;gap:15px;width:100%;}
+#logo-generator canvas{border:2px solid #ff4444;border-radius:12px;box-shadow:0 0 20px red;}
+
+/* INPUTS & SLIDERS */
+input, button{padding:10px 12px;border-radius:8px;border:none;outline:none;}
+button{background:#ff3333;color:white;cursor:pointer;font-weight:500;transition:0.3s;box-shadow:0 0 15px red;}
+button:hover{background:#ff0000;box-shadow:0 0 25px #ff6666;}
+label{margin-top:5px;font-size:0.9rem;color:#ffaaaa;}
+
+/* BIO GENERATOR */
+#bio-generator{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;}
+#bio-generator textarea{width:100%;max-width:400px;height:120px;padding:10px;border-radius:8px;border:none;outline:none;resize:none;}
+
+/* FOOTER */
+footer{text-align:center;padding:20px;margin-top:auto;color:white;background: rgba(0,0,0,0.9);border-top:3px solid #ff4444;box-shadow:0 -4px 15px rgba(255,0,0,0.3);}
+footer a{color:#ff6666;text-decoration:none;margin:0 12px;font-weight:500;transition:0.3s;}
+footer a:hover{color:#ff9999; text-shadow:0 0 10px red;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{flex-direction:column;padding:12px 20px;}
+  nav ul{flex-direction:column;margin-top:10px;}
+  nav ul li{margin:10px 0;}
+  #template-selection .templates{grid-template-columns:repeat(auto-fill,minmax(50px,1fr));}
+  #logo-generator canvas{width:90%; height:auto;}
+}
+</style>
+</head>
+<body>
+
+<video autoplay muted loop id="bg-video">
+  <source src="assets/background.mp4" type="video/mp4">
+</video>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="logo-container">
+    <img src="logo.png" alt="Blaze Squard Logo" style="width:40px;height:40px;margin-right:10px;">
+    <span class="logo-text">BLAZE SQUARD</span>
+  </div>
+  <ul>
+    <li><a href="home.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="squard.html">Squard</a></li>
+    <li><a href="tools.html">Tools</a></li>
+    <li><a href="downloads.html">Downloads</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <!-- TEMPLATE SELECTION -->
+  <div class="section-card" id="template-selection">
+    <h3>Select Template</h3>
+    <div class="templates">
+      <img src="assets/templetes/template1.png" class="template-thumb">
+      <img src="assets/templetes/template2.png" class="template-thumb">
+      <img src="assets/templetes/template3.png" class="template-thumb">
+      <img src="assets/templetes/template4.png" class="template-thumb">
+      <img src="assets/templetes/template5.png" class="template-thumb">
+      <img src="assets/templetes/template6.png" class="template-thumb">
+      <img src="assets/templetes/template7.png" class="template-thumb">
+      <img src="assets/templetes/template8.png" class="template-thumb">
+      <img src="assets/templetes/template9.png" class="template-thumb">
+      <img src="assets/templetes/template10.png" class="template-thumb">
+    </div>
+  </div>
+
+  <!-- LOGO GENERATOR -->
+  <div class="section-card" id="logo-generator">
+    <h2>Logo Preview</h2>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;width:100%;justify-content:center;align-items:center;">
+      <input type="text" id="page-name" placeholder="Page Name" style="flex:1;min-width:160px;">
+      <select id="page-font" title="Page name font" style="min-width:160px;padding:8px;border-radius:8px;border:none;">
+        <option value="Montserrat" selected>Montserrat (Modern)</option>
+        <option value="Poppins">Poppins (Clean)</option>
+        <option value="Roboto">Roboto (Neutral)</option>
+        <option value="Lato">Lato (Friendly)</option>
+        <option value="Oswald">Oswald (Condensed)</option>
+        <option value="Inter">Inter (UI)</option>
+        <option value="Playfair Display">Playfair Display (Serif)</option>
+        <option value="Merriweather">Merriweather (Readable)</option>
+        <option value="Raleway">Raleway (Elegant)</option>
+        <option value="Nunito">Nunito (Rounded)</option>
+        <option value="Source Sans 3">Source Sans 3 (Neutral)</option>
+        <option value="Abril Fatface">Abril Fatface (Display)</option>
+        <option value="Open Sans">Open Sans (Web)</option>
+        <option value="Satisfy">Satisfy (Script)</option>
+      </select>
+      <input type="color" id="page-color" title="Page name color" value="#ff4444" style="width:44px;height:38px;border-radius:8px;border:none;cursor:pointer;">
+    </div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;width:100%;justify-content:center;align-items:center;">
+      <input type="text" id="admin-name" placeholder="Admin Name" style="flex:1;min-width:160px;">
+      <select id="admin-font" title="Admin name font" style="min-width:160px;padding:8px;border-radius:8px;border:none;">
+        <option value="Poppins" selected>Poppins (Clean)</option>
+        <option value="Montserrat">Montserrat (Modern)</option>
+        <option value="Roboto">Roboto (Neutral)</option>
+        <option value="Lato">Lato (Friendly)</option>
+        <option value="Oswald">Oswald (Condensed)</option>
+        <option value="Inter">Inter (UI)</option>
+        <option value="Playfair Display">Playfair Display (Serif)</option>
+        <option value="Merriweather">Merriweather (Readable)</option>
+        <option value="Raleway">Raleway (Elegant)</option>
+        <option value="Nunito">Nunito (Rounded)</option>
+        <option value="Source Sans 3">Source Sans 3 (Neutral)</option>
+        <option value="Abril Fatface">Abril Fatface (Display)</option>
+        <option value="Open Sans">Open Sans (Web)</option>
+        <option value="Satisfy">Satisfy (Script)</option>
+      </select>
+      <input type="color" id="admin-color" title="Admin name color" value="#ffffff" style="width:44px;height:38px;border-radius:8px;border:none;cursor:pointer;">
+    </div>
+
+    <!-- Text Position Sliders -->
+    <label>Page Name Y Position</label>
+    <input type="range" id="page-y" min="0" max="512" value="120">
+    <label>Admin Name Y Position</label>
+    <input type="range" id="admin-y" min="0" max="512" value="250">
+    <label>Page Name Size</label>
+    <input type="range" id="page-size" min="10" max="80" value="40">
+    <label>Admin Name Size</label>
+    <input type="range" id="admin-size" min="10" max="50" value="24">
+
+    <canvas id="logo-canvas" width="512" height="512"></canvas>
+    <button id="download-logo">Download Logo</button>
+  </div>
+
+  <!-- BIO GENERATOR -->
+  <div class="section-card" id="bio-generator">
+    <h2>Bio Generator</h2>
+    <input type="text" id="bio-page-name" placeholder="Page Name">
+    <input type="text" id="bio-admin-name" placeholder="Admin Name">
+    <button id="generate-bio">Generate Bio</button>
+    <textarea id="bio-output" readonly></textarea>
+    <button id="copy-bio">Copy Bio</button>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2025 Blaze Squard |
+  <a href="#">Instagram</a> |
+  <a href="#">TikTok</a> |
+  <a href="#">YouTube</a>
+</footer>
+
+<script>
+const canvas = document.getElementById('logo-canvas');
+const ctx = canvas.getContext('2d');
+const pageInput = document.getElementById('page-name');
+const adminInput = document.getElementById('admin-name');
+const downloadBtn = document.getElementById('download-logo');
+
+const pageY = document.getElementById('page-y');
+const adminY = document.getElementById('admin-y');
+const pageSize = document.getElementById('page-size');
+const adminSize = document.getElementById('admin-size');
+
+let bgImage = new Image();
+// default template path (templates live in assets/templetes/)
+bgImage.src = 'assets/templetes/template1.png';
+
+async function drawLogo(){
+  // Wait for selected fonts to be available before drawing to avoid fallback
+  const pageFont = document.getElementById('page-font').value || 'Montserrat';
+  const adminFont = document.getElementById('admin-font').value || 'Poppins';
+  try{
+    // load fonts at the sizes to ensure metrics are correct
+    await Promise.all([
+      document.fonts.load(`${pageSize.value}px "${pageFont}"`),
+      document.fonts.load(`${adminSize.value}px "${adminFont}"`)
+    ]);
+  }catch(e){
+    // ignore loading errors — we'll still draw with fallback fonts
+    console.warn('Font load error', e);
+  }
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.drawImage(bgImage,0,0,canvas.width,canvas.height);
+
+  // Page Name
+  const pageColor = document.getElementById('page-color') ? document.getElementById('page-color').value : '#ff4444';
+  ctx.fillStyle = pageColor;
+  ctx.font = `bold ${pageSize.value}px "${pageFont}"`;
+  ctx.textAlign = "center";
+  ctx.fillText(pageInput.value || "PAGE NAME", canvas.width/2, pageY.value);
+
+  // Admin Name
+  const adminColor = document.getElementById('admin-color') ? document.getElementById('admin-color').value : '#ffffff';
+  ctx.fillStyle = adminColor;
+  ctx.font = `${adminSize.value}px "${adminFont}"`;
+  ctx.fillText(adminInput.value || "ADMIN NAME", canvas.width/2, adminY.value);
+}
+
+// Template selection
+document.querySelectorAll('.template-thumb').forEach(img=>{
+  img.addEventListener('click', ()=>{
+    bgImage.src = img.src;
+  });
+});
+
+bgImage.onload = ()=>{ drawLogo(); };
+pageInput.addEventListener('input', ()=>{ drawLogo(); });
+adminInput.addEventListener('input', ()=>{ drawLogo(); });
+pageY.addEventListener('input', ()=>{ drawLogo(); });
+adminY.addEventListener('input', ()=>{ drawLogo(); });
+pageSize.addEventListener('input', ()=>{ drawLogo(); });
+adminSize.addEventListener('input', ()=>{ drawLogo(); });
+
+// Font selectors
+const pageFontSelect = document.getElementById('page-font');
+const adminFontSelect = document.getElementById('admin-font');
+// apply selected font to input elements so user sees preview
+function applyInputFonts(){
+  pageInput.style.fontFamily = pageFontSelect.value;
+  adminInput.style.fontFamily = adminFontSelect.value;
+  // apply selected colors to inputs for live preview
+  const pc = document.getElementById('page-color');
+  const ac = document.getElementById('admin-color');
+  if(pc) pageInput.style.color = pc.value;
+  if(ac) adminInput.style.color = ac.value;
+}
+pageFontSelect.addEventListener('change', ()=>{ applyInputFonts(); drawLogo(); });
+adminFontSelect.addEventListener('change', ()=>{ applyInputFonts(); drawLogo(); });
+// color inputs
+const pageColorInput = document.getElementById('page-color');
+const adminColorInput = document.getElementById('admin-color');
+if(pageColorInput) pageColorInput.addEventListener('input', ()=>{ applyInputFonts(); drawLogo(); });
+if(adminColorInput) adminColorInput.addEventListener('input', ()=>{ applyInputFonts(); drawLogo(); });
+applyInputFonts();
+
+// Download PNG (robust: await draw, use toBlob, handle IE/msSave)
+downloadBtn.addEventListener('click', async ()=>{
+  // ensure latest drawing (fonts/images loaded)
+  try{
+    downloadBtn.disabled = true;
+    const origText = downloadBtn.textContent;
+    downloadBtn.textContent = 'Preparing...';
+    await drawLogo();
+
+    // Use toBlob for better memory behavior and cross-browser save
+    if (!canvas.toBlob) {
+      // fallback to dataURL
+      const link = document.createElement('a');
+      link.download = 'logo.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      downloadBtn.textContent = origText;
+      downloadBtn.disabled = false;
+      return;
+    }
+
+    canvas.toBlob((blob)=>{
+      if(!blob){
+        alert('Export failed — the canvas may be tainted or empty. Check console for details.');
+        console.error('Canvas.toBlob returned null — possible tainting or error.');
+        downloadBtn.textContent = origText;
+        downloadBtn.disabled = false;
+        return;
+      }
+
+      // IE / Edge Legacy support
+      if(window.navigator && window.navigator.msSaveOrOpenBlob){
+        window.navigator.msSaveOrOpenBlob(blob, 'logo.png');
+        downloadBtn.textContent = origText;
+        downloadBtn.disabled = false;
+        return;
+      }
+
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'logo.png';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(()=> URL.revokeObjectURL(url), 10000);
+      downloadBtn.textContent = origText;
+      downloadBtn.disabled = false;
+    }, 'image/png');
+
+  }catch(err){
+    console.error('Download error', err);
+    alert('Could not prepare the image for download. See console for details.');
+    downloadBtn.disabled = false;
+    downloadBtn.textContent = 'Download Logo';
+  }
+});
+
+// BIO GENERATOR
+const bioPage = document.getElementById('bio-page-name');
+const bioAdmin = document.getElementById('bio-admin-name');
+const bioOutput = document.getElementById('bio-output');
+
+document.getElementById('generate-bio').addEventListener('click', ()=>{
+  bioOutput.value = `${bioPage.value || "PAGE NAME"} 
+ADMIN ${bioAdmin.value || "ADMIN NAME"}
+Blaze Squard!
+☑️ 𝗧𝗶𝗸 𝗧𝗼𝗸`;
+});
+
+document.getElementById('copy-bio').addEventListener('click', ()=>{
+  bioOutput.select();
+  document.execCommand('copy');
+  alert("Bio copied to clipboard!");
+});
+</script>
+
+</body>
+</html>
