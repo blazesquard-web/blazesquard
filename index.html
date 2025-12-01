@@ -254,7 +254,22 @@ async function registerUser(){
   alert("Account Created!");
   showLogin();
 }
+
+  // AUTO PLAY MUSIC ON FIRST USER CLICK
+function startAudio() {
+  const audio = document.getElementById("bgAudio");
+  audio.volume = 0.6;
+  audio.loop = true;
+  audio.play().catch(() => {});
+
+  window.removeEventListener("click", startAudio);
+}
+
+// Start audio when user interacts (browser autoplay policy)
+window.addEventListener("click", startAudio);
+
 </script>
 </body>
 </html>
+
 
