@@ -34,55 +34,48 @@ body{
   filter:brightness(0.3);
 }
 
-/* NAVIGATION */
-nav{
-  position: fixed; width:100%; top:0; left:0;
-  background: rgba(0,0,0,0.8);
-  display:flex; justify-content: space-between; align-items:center;
-  padding:12px 40px;
-  z-index:1000; backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(255,0,0,0.3);
-  border-bottom: 2px solid #ff3333;
-  transition:0.3s;
-}
-nav:hover{ background: rgba(0,0,0,0.9); }
-
-/* Logo + PNG */
-nav .logo-container{
-  display:flex; align-items:center; cursor:pointer;
-}
-nav .squad-logo{
-  width:40px; height:40px; margin-right:10px;
-}
-nav .logo-text{
-  font-family:'Montserrat', sans-serif;
-  font-size:1.8rem;
-  font-weight:700;
-  color:#ff4444;
-  text-shadow:0 0 10px red,0 0 20px #ff6666;
-  transition:0.3s;
-}
-nav .logo-container:hover .logo-text{
-  color:#ff9999;
-  text-shadow:0 0 20px red,0 0 30px #ff8888;
+/* HAMBURGER BUTTON */
+.hamburger{
+  display:none;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
+  user-select:none;
 }
 
-nav ul{
-  display:flex; list-style:none;
+/* MOBILE MENU COLLAPSE */
+@media(max-width:768px){
+
+  nav{
+    flex-direction:row;
+    justify-content:space-between;
+    padding:12px 20px;
+  }
+
+  .hamburger{
+    display:block;
+  }
+
+  nav ul{
+    display:none;
+    flex-direction:column;
+    width:100%;
+    background:rgba(0,0,0,0.85);
+    border-top:2px solid #ff3333;
+    margin-top:10px;
+    padding:15px 0;
+  }
+
+  nav ul.show{
+    display:flex;
+  }
+
+  nav ul li{
+    margin:10px 0;
+    text-align:center;
+  }
 }
-nav ul li{ margin-left:25px; position: relative;}
-nav ul li a{
-  font-family:'Roboto', sans-serif;
-  font-weight:500;
-  text-decoration:none; color:white;
-  padding:6px 10px; transition:0.3s;
-}
-nav ul li a::after{
-  content:""; position:absolute; left:0; bottom:-2px;
-  width:0%; height:2px; background:#ff4444; transition:0.3s;
-}
-nav ul li a:hover::after{ width:100%; }
-nav ul li a:hover{ color:#ff6666; }
+
 
 /* HOME SECTION */
 #home{
@@ -221,7 +214,13 @@ footer a:hover{ color:#ff9999; text-shadow:0 0 10px red; }
     <img src="logo.png" alt="Blaze Squard Logo" class="squad-logo">
     <span class="logo-text">BLAZE SQUARD</span>
   </div>
-  <ul>
+
+  <!-- HAMBURGER BUTTON -->
+  <div class="hamburger" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <ul id="nav-menu">
     <li><a href="home.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="squard.html">Squard</a></li>
@@ -230,6 +229,7 @@ footer a:hover{ color:#ff9999; text-shadow:0 0 10px red; }
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
+
 
 <!-- HOME SECTION -->
 <section id="home">
@@ -334,3 +334,4 @@ window.addEventListener('scroll', ()=>{
 
 </body>
 </html>
+
