@@ -11,18 +11,6 @@
 /* IMPORT GOOGLE FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;500&family=Roboto:wght@500&display=swap');
 
-/* HAMBURGER BUTTON */
-.hamburger{
-  display:none;
-  font-size:28px;
-  color:white;
-  cursor:pointer;
-  user-select:none;
-}
-
-  /* MOBILE MENU COLLAPSE */
-@media(max-width:768px){
-  
 /* RESET */
 *{ margin:0; padding:0; box-sizing:border-box; }
 
@@ -51,18 +39,11 @@ nav{
   position: fixed; width:100%; top:0; left:0;
   background: rgba(0,0,0,0.8);
   display:flex; justify-content: space-between; align-items:center;
-  padding:12px 20px;
+  padding:12px 40px;
   z-index:1000; backdrop-filter: blur(10px);
   box-shadow: 0 4px 20px rgba(255,0,0,0.3);
   border-bottom: 2px solid #ff3333;
   transition:0.3s;
-  flex-direction:row;
-  justify-content:space-between;
-  padding:12px 20px;
-}
-
-.hamburger{
-  display:block;
 }
 nav:hover{ background: rgba(0,0,0,0.9); }
 
@@ -88,25 +69,8 @@ nav .logo-container:hover .logo-text{
 
 nav ul{
   display:flex; list-style:none;
-  display:none;
-  flex-direction:column;
-  width:100%;
-  background:rgba(0,0,0,0.85);
-  border-top:2px solid #ff3333;
-  margin-top:10px;
-  padding:15px 0;
 }
-
-nav ul.show{
-  display:flex;
-}
-  
-nav ul li{
-  margin-left:25px; position: relative;
-  margin:10px 0;
-  text-align:center;
-         
-         }
+nav ul li{ margin-left:25px; position: relative;}
 nav ul li a{
   font-family:'Roboto', sans-serif;
   font-weight:500;
@@ -257,13 +221,7 @@ footer a:hover{ color:#ff9999; text-shadow:0 0 10px red; }
     <img src="logo.png" alt="Blaze Squard Logo" class="squad-logo">
     <span class="logo-text">BLAZE SQUARD</span>
   </div>
-
-  <!-- HAMBURGER BUTTON -->
-  <div class="hamburger" onclick="toggleMenu()">
-    ☰
-  </div>
-
-  <ul id="nav-menu">
+  <ul>
     <li><a href="home.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="squard.html">Squard</a></li>
@@ -272,7 +230,6 @@ footer a:hover{ color:#ff9999; text-shadow:0 0 10px red; }
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
-
 
 <!-- HOME SECTION -->
 <section id="home">
@@ -377,5 +334,3 @@ window.addEventListener('scroll', ()=>{
 
 </body>
 </html>
-
-
