@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Squad Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        :root { --primary: #00f2fe; --secondary: #4facfe; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body {
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            background: #0f172a; color: #fff;
+        }
+        .login-card {
+            width: 350px; padding: 40px; background: rgba(255,255,255,0.05);
+            border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        h2 { margin-bottom: 20px; letter-spacing: 2px; }
+        input {
+            width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px;
+            border: none; background: rgba(255,255,255,0.1); color: #fff; outline: none;
+        }
+        button {
+            width: 100%; padding: 12px; border: none; border-radius: 8px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: #fff; font-weight: 600; cursor: pointer; transition: 0.3s;
+        }
+        button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,242,254,0.3); }
+        p { margin-top: 20px; font-size: 14px; color: #ccc; }
+        a { color: var(--primary); text-decoration: none; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h2>SQUAD LOGIN</h2>
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="pass" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p>New member? <a href="register.html">Register Here</a></p>
+    </div>
+
+    <script>
+        const _supabase = supabase.createClient('https://wyvzozpnzchcbkfbzvkc.supabase.co', 'sb_publishable_nbjpXj0bvxHWMJaeCmPzZg_uPsPd4h1');
+        async function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('pass').value;
+            const { error } = await _supabase.auth.signInWithPassword({ email, password });
+            if(error) alert(error.message);
+            else window.location.href = "dashboard.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squad Resources | Tools & APKs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --pink: #ff0055;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            background: #0f172a;
+            color: #fff;
+            min-height: 100vh;
+            padding: 40px 5%;
+        }
+
+        .header { text-align: center; margin-bottom: 50px; }
+        .header h1 { font-size: 32px; text-transform: uppercase; letter-spacing: 2px; }
+        .header h1 span { color: var(--primary); }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .res-card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .res-card:hover {
+            border-color: var(--pink);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .res-card h3 { font-size: 20px; margin-bottom: 10px; color: #fff; }
+        .res-card p { font-size: 13px; color: #aaa; margin-bottom: 20px; }
+
+        .download-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(45deg, var(--pink), #ff5e62);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .download-btn:hover {
+            box-shadow: 0 5px 15px rgba(255, 0, 85, 0.4);
+            transform: scale(1.05);
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="dashboard.html" class="back-btn">← Back to Dashboard</a>
+
+    <div class="header">
+        <h1>SQUAD <span>RESOURCES</span></h1>
+        <p style="color: #666; margin-top: 10px;">Download the best tools for your TikTok journey</p>
+    </div>
+
+    <div class="resource-grid">
+        
+        <div class="res-card">
+            <span class="icon">📱</span>
+            <h3>TikTok Mod APK</h3>
+            <p>No Watermark, Ad-Free, and High-Quality Video Uploads.</p>
+            <a href="YOUR_LINK_HERE" class="download-btn">Download v32.0</a>
+        </div>
+
+        <div class="res-card">
+            <span class="icon">🎬</span>
+            <h3>CapCut Pro</h3>
+            <p>All premium effects and transitions unlocked for squad members.</p>
+            <a href="YOUR_LINK_HERE" class="download-btn">Download Pro</a>
+        </div>
+
+        <div class="res-card">
+            <span class="icon">⚡</span>
+            <h3>Plugin Pack</h3>
+            <p>Special plugins for better reach and trending sound detection.</p>
+            <a href="YOUR_LINK_HERE" class="download-btn">Download Pack</a>
+        </div>
+
+        <div class="res-card">
+            <span class="icon">🎨</span>
+            <h3>Lightroom Presets</h3>
+            <p>Professional color grading presets for your TikTok covers.</p>
+            <a href="YOUR_LINK_HERE" class="download-btn">Get Presets</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squad Dashboard | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --pink: #ff0055;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at top right, #1e293b, #0f172a);
+            color: #fff;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-size: 22px; font-weight: 600; }
+        .logo span { color: var(--pink); }
+
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links a { color: #ccc; text-decoration: none; font-size: 13px; text-transform: uppercase; }
+
+        .container { padding: 40px 6%; max-width: 1200px; margin: auto; }
+
+        .welcome-box {
+            background: var(--glass);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+        }
+
+        h1 span { color: var(--primary); }
+
+        .id-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--pink), #ff5e62);
+            padding: 8px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--glass);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .stat-card h3 { font-size: 14px; color: #aaa; text-transform: uppercase; margin-bottom: 10px; }
+        .stat-card p { font-size: 28px; font-weight: 600; }
+
+        .logout-btn {
+            padding: 8px 15px;
+            background: none;
+            border: 1px solid var(--pink);
+            color: var(--pink);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">TIKTOK<span>SQUAD</span></div>
+        <div class="nav-links">
+            <a href="dashboard.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="resources.html">resources</a>
+            <a href="contact.html">Contact</a>
+            <a href="profile.html">Profile</a>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="welcome-box">
+            <h1 id="welcome-text">Loading...</h1>
+            <div class="id-badge">
+                SQUAD ID: <span id="squad-id">----</span>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Members</h3>
+                <p id="total-count">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Your Rank</h3>
+                <p id="user-rank" style="color: var(--primary);">Loading...</p>
+            </div>
+            <div class="stat-card">
+                <h3>Status</h3>
+                <p style="color: #4ade80;">Active ✅</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SUPABASE_URL = 'https://wyvzozpnzchcbkfbzvkc.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_nbjpXj0bvxHWMJaeCmPzZg_uPsPd4h1';
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function initDashboard() {
+            const { data: { user } } = await _supabase.auth.getUser();
+            if (!user) { window.location.href = "index.html"; return; }
+
+            // Profiles table eken Rank ekath ekkama okkoma data gannawa
+            const { data: profile, error } = await _supabase
+                .from('profiles')
+                .select('first_name, squad_id, rank') 
+                .eq('id', user.id)
+                .single();
+
+            if (profile) {
+                document.getElementById('welcome-text').innerHTML = `Welcome back, <span>${profile.first_name}!</span>`;
+                document.getElementById('squad-id').innerText = profile.squad_id;
+                
+                // METHANA THAMAI RANK EKA SET WENNE
+                const rankDisplay = document.getElementById('user-rank');
+                const userRank = profile.rank || 'Member'; // Rank eka nethnam 'Member' kiyala pennanawa
+                rankDisplay.innerText = userRank;
+
+                // Rank eka anuwa pata wenas karamu
+                if(userRank === 'Admin' || userRank === 'Owner') {
+                    rankDisplay.style.color = '#ff0055'; // Pink for Admins
+                } else if(userRank === 'VVIP') {
+                    rankDisplay.style.color = '#00f2fe'; // Blue for VVIP
+                } else {
+                    rankDisplay.style.color = '#4ade80'; // Green for normal users
+                }
+            }
+
+            // Total Members Count
+            const { count } = await _supabase.from('profiles').select('*', { count: 'exact', head: true });
+            document.getElementById('total-count').innerText = count || 0;
+        }
+
+        async function logout() {
+            await _supabase.auth.signOut();
+            window.location.href = "index.html";
+        }
+
+        initDashboard();
+    </script>
+</body>
+</html>

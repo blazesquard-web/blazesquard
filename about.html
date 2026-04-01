@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Squad | Admins</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --pink: #ff0055;
+            --dark-bg: #0f172a;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            background: radial-gradient(circle at top, #1e293b, #0f172a);
+            color: #fff;
+            min-height: 100vh;
+            padding: 40px 5%;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            padding: 8px 15px;
+            background: var(--glass);
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+
+        .back-btn:hover { background: var(--primary); color: #000; }
+
+        .header { text-align: center; margin-bottom: 60px; }
+        .header h1 { font-size: 35px; letter-spacing: 2px; text-transform: uppercase; }
+        .header h1 span { color: var(--pink); text-shadow: 0 0 15px var(--pink); }
+        .header p { color: #888; font-size: 14px; margin-top: 10px; }
+
+        /* Admin Grid */
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .admin-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: 0.5s ease;
+            position: relative;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 35px rgba(0, 242, 254, 0.2);
+        }
+
+        .admin-img {
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            padding: 5px;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .admin-name { font-size: 22px; font-weight: 600; }
+        .admin-role { 
+            display: block;
+            font-size: 12px; 
+            color: var(--pink); 
+            text-transform: uppercase; 
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* Stats Row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px 10px;
+            border-radius: 15px;
+        }
+
+        .stat-box h4 { font-size: 18px; color: var(--primary); }
+        .stat-box p { font-size: 9px; color: #aaa; text-transform: uppercase; margin-top: 3px; }
+
+        /* Footer Link */
+        .social-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+        .social-link:hover { opacity: 1; color: var(--primary); }
+
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="dashboard.html" class="back-btn">← DASHBOARD</a>
+    </div>
+
+    <div class="header">
+        <h1>OUR <span>ADMINS</span></h1>
+        <p>The Creative Minds Behind TikTok Squad</p>
+    </div>
+
+    <div class="admin-grid">
+        
+        <div class="admin-card">
+            <img src="https://via.placeholder.com/150" class="admin-img" alt="Leader">
+            <h2 class="admin-name">Sathsara Shiwanga</h2>
+            <span class="admin-role">Squad Owner</span>
+            <div class="stats-row">
+                <div class="stat-box"><h4>1.4K</h4><p>Followers</p></div>
+                <div class="stat-box"><h4>21.4K</h4><p>Likes</p></div>
+                <div class="stat-box"><h4>318</h4><p>Videos</p></div>
+            </div>
+            <a href="https://www.tiktok.com/@blz_chooty_quotes" class="social-link">Follow on TikTok →</a>
+        </div>
+
+        <div class="admin-card">
+            <img src="https://via.placeholder.com/150" class="admin-img" alt="Moderator">
+            <h2 class="admin-name">kaveen Dewdunu</h2>
+            <span class="admin-role">Squard Leader</span>
+            <div class="stats-row">
+                <div class="stat-box"><h4>729</h4><p>Followers</p></div>
+                <div class="stat-box"><h4>8074</h4><p>Likes</p></div>
+                <div class="stat-box"><h4>45</h4><p>Videos</p></div>
+            </div>
+            <a href="https://www.tiktok.com/@sdz___iron" class="social-link">Follow on TikTok →</a>
+        </div>
+
+        <div class="admin-card">
+            <img src="https://via.placeholder.com/150" class="admin-img" alt="Editor">
+            <h2 class="admin-name">Shanuka Denuwan</h2>
+            <span class="admin-role">Moderater</span>
+            <div class="stats-row">
+                <div class="stat-box"><h4>1170</h4><p>Followers</p></div>
+                <div class="stat-box"><h4>17.6K</h4><p>Likes</p></div>
+                <div class="stat-box"><h4>30</h4><p>Videos</p></div>
+            </div>
+            <a href="https://www.tiktok.com/@shanukadenuwan" class="social-link">Follow on TikTok →</a>
+        </div>
+
+        <div class="admin-card">
+            <img src="https://via.placeholder.com/150" class="admin-img" alt="Editor">
+            <h2 class="admin-name">Thisum Nimasha</h2>
+            <span class="admin-role">Admin</span>
+            <div class="stats-row">
+                <div class="stat-box"><h4>64</h4><p>Followers</p></div>
+                <div class="stat-box"><h4>387</h4><p>Likes</p></div>
+                <div class="stat-box"><h4>7</h4><p>Videos</p></div>
+            </div>
+            <a href="https://www.tiktok.com/@thisumnimasha0" class="social-link">Follow on TikTok →</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

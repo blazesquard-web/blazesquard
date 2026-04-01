@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Squad | Get in Touch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --pink: #ff0055;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            background: #0f172a;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 5%;
+        }
+
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { font-size: 32px; text-transform: uppercase; letter-spacing: 2px; }
+        .header h1 span { color: var(--pink); }
+
+        .contact-container {
+            width: 100%;
+            max-width: 800px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-card {
+            background: var(--glass);
+            padding: 30px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .contact-card h3 { margin-bottom: 15px; color: var(--primary); }
+        .contact-card p { font-size: 14px; color: #ccc; margin-bottom: 20px; }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .social-btn {
+            padding: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .whatsapp { background: #25d366; }
+        .telegram { background: #0088cc; }
+        .tiktok { background: #000; border: 1px solid #fff; }
+
+        .social-btn:hover { opacity: 0.8; transform: scale(1.02); }
+
+        /* Simple Form (Display Only) */
+        .msg-form input, .msg-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.2);
+            color: #fff;
+            outline: none;
+        }
+
+        .send-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--pink);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .back-btn {
+            align-self: flex-start;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="dashboard.html" class="back-btn">← Back to Dashboard</a>
+
+    <div class="header">
+        <h1>GET IN <span>TOUCH</span></h1>
+        <p style="color: #666; margin-top: 10px;">Connect with the Squad Admins</p>
+    </div>
+
+    <div class="contact-container">
+        
+        <div class="contact-card">
+            <h3>Quick Connect</h3>
+            <p>Join our groups or message us directly for fast support.</p>
+            <div class="social-links">
+                <a href="https://wa.me/YOUR_NUMBER" class="social-btn whatsapp">WhatsApp Support</a>
+                <a href="https://t.me/YOUR_USER" class="social-btn telegram">Telegram Group</a>
+                <a href="https://tiktok.com/@YOUR_PAGE" class="social-btn tiktok">Follow TikTok</a>
+            </div>
+        </div>
+
+        <div class="contact-card">
+            <h3>Drop a Message</h3>
+            <form class="msg-form" onsubmit="event.preventDefault(); alert('Message sent to Admins!');">
+                <input type="text" placeholder="Your Name" required>
+                <textarea rows="4" placeholder="Your Message" required></textarea>
+                <button type="submit" class="send-btn">Send Message</button>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>
